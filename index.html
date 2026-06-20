@@ -221,6 +221,26 @@
             border-color: var(--accent-green);
         }
 
+        .project-img-container {
+            width: 100%;
+            height: 180px;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-img {
+            transform: scale(1.05);
+        }
+
         .project-title {
             color: var(--text-main);
             font-size: 1.3rem;
@@ -314,7 +334,7 @@
     <!-- Home Section -->
     <section id="home">
         <div class="profile-container">
-            <img src="YOUR_PROFILE_PIC_URL_HERE" alt="Olwam Profile" class="profile-pic">
+            <img src="https://avatars.githubusercontent.com/u/77309901?v=4" alt="Olwam Profile" class="profile-pic">
             <div class="open-to-work">
                 <div class="status-dot"></div>
                 Open to work
@@ -334,8 +354,7 @@
         <div class="social-links">
             <a href="mailto:olwamnhose5@gmail.com">✉️ Email</a>
             <a href="https://github.com/rrebldomakr" target="_blank">🐙 GitHub</a>
-            <!-- WHATSAPP LINK ADDED HERE -->
-            <a href="https://wa.me/YOUR_PHONE_NUMBER_HERE" target="_blank">📱 WhatsApp</a>
+            <a href="https://wa.me/+27813988827" target="_blank">📱 WhatsApp</a>
         </div>
     </section>
 
@@ -354,16 +373,21 @@
         <h2 class="section-title">Projects</h2>
         <div class="projects-grid">
             
-            <!-- Replace these with the new projects we discuss below! -->
             <div class="project-card">
-                <h3 class="project-title">Project Title Here</h3>
-                <p class="project-desc">Project description goes here.</p>
+                <div class="project-img-container">
+                    <img src="image_778ffd.jpg" alt="WeatherAtmos Interface" class="project-img">
+                </div>
+                <h3 class="project-title">WeatherAtmos</h3>
+                <p class="project-desc">A real-time 3D meteorological visualization tool that maps global telemetry onto an interactive WebGL globe. Engineered with custom in-memory caching to optimize API latency and an absolute-positioned glassmorphism UI decoupled from the WebGL render loop.</p>
                 <div class="project-tech">
-                    <span class="tech-pill">Next.js</span>
-                    <span class="tech-pill">TypeScript</span>
+                    <span class="tech-pill">JavaScript (ES6+)</span>
+                    <span class="tech-pill">WebGL / Three.js</span>
+                    <span class="tech-pill">REST APIs</span>
+                    <span class="tech-pill">CSS3</span>
                 </div>
                 <div class="project-links">
-                    <a href="#" target="_blank">🔗 GitHub</a>
+                    <a href="https://rrebldomakr.github.io/WeatherAtmos/" target="_blank">🌐 Live Demo</a>
+                    <a href="https://github.com/rrebldomakr/WeatherAtmos" target="_blank">🐙 GitHub</a>
                 </div>
             </div>
 
@@ -407,7 +431,7 @@
         </div>
     </section>
 
-    <!-- Interactive Cyber Background Logic (UPDATED FOR MOUSE TRACKING) -->
+    <!-- Interactive Cyber Background Logic -->
     <script>
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
@@ -417,7 +441,6 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        // Mouse interaction object
         let mouse = {
             x: null,
             y: null,
@@ -431,7 +454,6 @@
             }
         );
 
-        // Remove mouse position when it leaves the screen
         window.addEventListener('mouseout',
             function() {
                 mouse.x = undefined;
@@ -473,7 +495,6 @@
                     this.directionY = -this.directionY;
                 }
 
-                // Move particle away from mouse slightly
                 let dx = mouse.x - this.x;
                 let dy = mouse.y - this.y;
                 let distance = Math.sqrt(dx * dx + dy * dy);
@@ -533,7 +554,6 @@
                     }
                 }
                 
-                // Connect particles to mouse
                 if(mouse.x && mouse.y) {
                     let mouseDistance = ((particlesArray[a].x - mouse.x) * (particlesArray[a].x - mouse.x))
                                       + ((particlesArray[a].y - mouse.y) * (particlesArray[a].y - mouse.y));
